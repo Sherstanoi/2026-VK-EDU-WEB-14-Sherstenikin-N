@@ -1,0 +1,29 @@
+<div class = "question-block">
+                <div class = "img-block-part">
+                    <img src="../8e3de5c97eee1ca.webp" class = "avatar avatar-block">
+                    <div class = "rating">
+                        <div class = "rating-info"><span class = "rating-span">34</span></div>
+                        <div class = "rating-arrows">
+                            <button type = "button" class = "rating-arrow arrow-right"> <i class="bi bi-caret-up-fill"></i> </button>
+                            <button type = "button" class = "rating-arrow arrow-left"> <i class="bi bi-caret-down-fill"></i> </button>
+                        </div>
+                    </div>
+                </div>
+                <div class = "info-block-part">
+                    <a href = "{% url "question" %}">
+                        <h2 class = "no-margin">{{question.title}} {{question.id}}</h2>
+                    </a>
+                    <div class = "information">{{question.text}}</div>
+                    <div class = "links-in-question">
+                        <div class = "answers">
+                            <a href = "{% url "index" %}"> answers: 13</a>
+                        </div>
+                    <div class = "tags-block">
+                        tags:
+                        <a href = "{% url "tag" %}" class = "tags-in-question">Философия</a>
+                        <a href = "{% url "tag" %}" class = "tags-in-question">Счастье</a>
+                        <a href = "{% url "tag" %}" class = "tags-in-question">Жизнь</a>
+                    </div>
+                </div>
+            </div>
+        </div>

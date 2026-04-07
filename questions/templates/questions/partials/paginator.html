@@ -1,0 +1,18 @@
+<div id = "another-pages">
+                    {%if page_obj.has_previous%}
+                    <button class = "page-button my-button"><a href = "?page=1" class = "page_a"><i class="bi bi-chevron-double-left"></i></a></button>
+                    <button class = "page-button my-button"><a href = "?page={{page_obj.previous_page_number}}" class = "page_a">{{page_obj.previous_page_number}}</a></button>
+                    {% else %}
+                    <button class = "page-button my-button disabled"><i class="bi bi-chevron-double-left"></i></button>
+                    <button class = "page-button my-button disabled">1</button>
+                    {%endif%}
+                    <button class = "page-button my-button current_page">{{page_obj.number}}</button>
+                    {%if page_obj.has_next%}
+                    <button class = "page-button my-button"><a href = "?page={{page_obj.next_page_number}}" class = "page_a">{{page_obj.next_page_number}}</a></button>
+                    <button class = "page-button my-button"><a  href = "?page={{page_obj.paginator.num_pages}}" class = "page_a"><i class="bi bi-chevron-double-right"></i></a></button>
+                    {%else%}
+                    <button class = "page-button my-button disabled">{{page_obj.paginator.num_pages}}</button>
+                    <button class = "page-button my-button disabled"><i class="bi bi-chevron-double-right"></i></button>
+                    {%endif%}
+                </div>
+            </div>
