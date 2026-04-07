@@ -6,6 +6,7 @@ class LoginView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
+        context['img_url'] = '/media/8e3de5c97eee1ca.webp'
         return context
 
 
@@ -14,6 +15,7 @@ class RegisterView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
+        context['img_url'] = '/media/8e3de5c97eee1ca.webp'
         return context
 
  
@@ -22,4 +24,5 @@ class SettingsView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
+        context['img_url'] = '/media/8e3de5c97eee1ca.webp'
         return context

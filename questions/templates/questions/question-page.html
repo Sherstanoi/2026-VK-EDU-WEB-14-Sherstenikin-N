@@ -18,7 +18,7 @@
         <div id = "question-block-mama">
             <div class = "special-question-block">
                 <div class = "special-img-block-part">
-                    <img src="../8e3de5c97eee1ca.webp" class = "avatar special-avatar-block">
+                    <img src="{{img_url}}" class = "avatar special-avatar-block">
                     <div class = "special-rating">
                         <div class = "rating-info"><span class = "rating-span">34</span></div>
                         <div class = "rating-arrows">
@@ -28,16 +28,16 @@
                     </div>
                 </div>
                 <div class = "info-block-part">
-                    <a href = "{% url "question" %}">
+                    <a href = "{% url "questions:question" %}">
                         <h2 class = "no-margin">What is the meaning of life?</h2>
                     </a>
                     <div class = "information">There is no great devine. You are free to choose, what is your own meaning of life. As long as you don`t make other people sad. There is no great devine. You are free to choose, what is your own meaning of life. As long as you don`t make other people sad......</div>
                     <div class = "links-in-question">
                         <div class = "tags-block">
                             tags:
-                            <a href = "{% url "tag" %}" class = "tags-in-question">Философия</a>
-                            <a href = "{% url "tag" %}" class = "tags-in-question">Счастье</a>
-                            <a href = "{% url "tag" %}" class = "tags-in-question">Жизнь</a>
+                            <a href = "{% url "questions:tag" %}" class = "tags-in-question">Философия</a>
+                            <a href = "{% url "questions:tag" %}" class = "tags-in-question">Счастье</a>
+                            <a href = "{% url "questions:tag" %}" class = "tags-in-question">Жизнь</a>
                         </div>
                     </div>
                 </div>

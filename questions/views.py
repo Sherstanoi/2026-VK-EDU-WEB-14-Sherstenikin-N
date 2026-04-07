@@ -44,6 +44,7 @@ class IndexView(TemplateView):
         page_obj = paginator(QUESTIONS, 3, self.request)
         context['questions'] = page_obj
         context['page_obj'] = page_obj
+        context['img_url'] = '/media/8e3de5c97eee1ca.webp'
         return context
     
 
@@ -56,6 +57,7 @@ class TagView(TemplateView):
         page_obj = paginator(QUESTIONS, 3, self.request)
         context['questions'] = page_obj
         context['page_obj'] = page_obj
+        context['img_url'] = '/media/8e3de5c97eee1ca.webp'
         return context
     
 class QuestionView(TemplateView):
@@ -64,6 +66,7 @@ class QuestionView(TemplateView):
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
         context['questions'] = QUESTION
+        context['img_url'] = '/media/8e3de5c97eee1ca.webp'
         return context
 
 class NewQuestionView(TemplateView):
@@ -72,4 +75,5 @@ class NewQuestionView(TemplateView):
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
         context['questions'] = QUESTION
+        context['img_url'] = '/media/8e3de5c97eee1ca.webp'
         return context

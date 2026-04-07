@@ -1,6 +1,6 @@
 <div class = "question-block">
                 <div class = "img-block-part">
-                    <img src="../8e3de5c97eee1ca.webp" class = "avatar avatar-block">
+                    <img src="{{img_url}}" class = "avatar avatar-block">
                     <div class = "rating">
                         <div class = "rating-info"><span class = "rating-span">34</span></div>
                         <div class = "rating-arrows">
@@ -10,19 +10,19 @@
                     </div>
                 </div>
                 <div class = "info-block-part">
-                    <a href = "{% url "question" %}">
+                    <a href = "{% url "questions:question" %}">
                         <h2 class = "no-margin">{{question.title}} {{question.id}}</h2>
                     </a>
                     <div class = "information">{{question.text}}</div>
                     <div class = "links-in-question">
                         <div class = "answers">
-                            <a href = "{% url "index" %}"> answers: 13</a>
+                            <a href = "{% url "questions:index" %}"> answers: 13</a>
                         </div>
                     <div class = "tags-block">
                         tags:
-                        <a href = "{% url "tag" %}" class = "tags-in-question">Философия</a>
-                        <a href = "{% url "tag" %}" class = "tags-in-question">Счастье</a>
-                        <a href = "{% url "tag" %}" class = "tags-in-question">Жизнь</a>
+                        <a href = "{% url "questions:tag" %}" class = "tags-in-question">Философия</a>
+                        <a href = "{% url "questions:tag" %}" class = "tags-in-question">Счастье</a>
+                        <a href = "{% url "questions:tag" %}" class = "tags-in-question">Жизнь</a>
                     </div>
                 </div>
             </div>
