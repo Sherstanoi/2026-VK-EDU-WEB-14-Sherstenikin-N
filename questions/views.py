@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import TemplateView
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+
 
 QUESTIONS = [
     {
@@ -25,15 +26,14 @@ def paginator(items, per_page, request, page_param='page'):
     paginator = Paginator(items, per_page)
     page_number = request.GET.get(page_param, '1')
     
-    if page_number.isdigit() and int(page_number) > 0:
-        page_number = int(page_number)
-    else:
-        page_number = 1
+    try:
+        page = paginator.page(page_number)
+    except PageNotAnInteger:
+        page = paginator.page(1)
+    except EmptyPage:
+        page = paginator.page(paginator.num_pages)
     
-    if page_number > paginator.num_pages:
-        page_number = paginator.num_pages
-    
-    return paginator.page(page_number)
+    return page
 
 
 class IndexView(TemplateView):
