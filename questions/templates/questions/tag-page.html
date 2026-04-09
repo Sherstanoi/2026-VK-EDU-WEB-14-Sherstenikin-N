@@ -1,0 +1,14 @@
+{%extends 'questions/layout/base_login.html' %}
+{%block content%}
+        <div id = "header-info">
+            <h2 id = "page-type">TAG: Философия</h2>
+        </div>
+    </header>
+
+    <div id = "main-body">
+        <div id = "question-block-mama">
+            {% for question in questions %}
+                {%include 'questions/partials/question-block.html'%}
+            {% endfor %}
+    {%include 'questions/partials/paginator.html'%}
+    {%endblock%}
