@@ -1,0 +1,14 @@
+{% extends 'questions/layout/base_login.html' %}
+{% block header_info %}
+    <div id="header-info">
+        <h2 id="page-type">TAG: {{ tag.name }}</h2>
+    </div>
+{% endblock %}
+{% block content %}
+    {% for question in questions %}
+        {% include 'questions/partials/question-block.html' %}
+    {% empty %}
+        <p>Пока нет ни одного вопроса с этим тегом.</p>
+    {% endfor %}
+    {% include 'questions/partials/paginator.html' %}
+{% endblock %}

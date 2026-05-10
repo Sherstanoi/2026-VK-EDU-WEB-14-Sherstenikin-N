@@ -1,0 +1,13 @@
+{% extends 'questions/layout/base_login.html' %}
+{% block header_info %}
+    <div id="header-info">
+        <h2 id="page-type">New Questions</h2>
+        <a class="normal-a sred" href="{% url 'questions:hot' %}">Hot questions</a>
+    </div>
+{% endblock %}
+{% block content %}
+    {% for question in questions %}
+        {% include 'questions/partials/question-block.html' %}
+    {% endfor %}
+    {% include 'questions/partials/paginator.html' %}
+{% endblock %}

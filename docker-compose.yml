@@ -1,0 +1,40 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: Truth_seeker
+      POSTGRES_USER: Admin
+      POSTGRES_PASSWORD: Admin
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: Truth_seeker
+      DB_USER: Admin
+      DB_PASSWORD: Admin
+      SECRET_KEY: "1234"
+      DEBUG: "True"
+      DJANGO_ALLOWED_HOSTS: "localhost,127.0.0.1"
+    command: >
+      sh -c "echo 'Waiting for database...';
+             while ! pg_isready -h db -p 5432 -U Admin -d Truth_seeker; do
+               sleep 2;
+             done;
+             echo 'Database is ready!';
+             python manage.py migrate;
+             python manage.py runserver 0.0.0.0:8000"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

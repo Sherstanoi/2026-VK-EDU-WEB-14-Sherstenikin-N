@@ -1,0 +1,29 @@
+<div class="question-block">
+    <div class="img-block-part">
+        <img src="{{ img_url }}" class="avatar avatar-block">
+        <div class="rating">
+            <div class="rating-info"><span class="rating-span">{{ question.like_count|default:0 }}</span></div>
+            <div class="rating-arrows">
+                <button type="button" class="rating-arrow arrow-right"> <i class="bi bi-caret-up-fill"></i> </button>
+                <button type="button" class="rating-arrow arrow-left"> <i class="bi bi-caret-down-fill"></i> </button>
+            </div>
+        </div>
+    </div>
+    <div class="info-block-part">
+        <a href="{% url 'questions:question' pk=question.id %}">
+            <h2 class="no-margin">{{ question.title }}</h2>
+        </a>
+        <div class="information">{{ question.text|truncatewords:20 }}</div>
+        <div class="links-in-question">
+            <div class="answers">
+                <a href="{% url 'questions:question' pk=question.id %}"> answers: {{ question.answers.count }}</a>
+            </div>
+            <div class="tags-block">
+                tags:
+                {% for tag in question.tags.all %}
+                    <a href="{% url 'questions:tag' tag_name=tag.name %}" class="tags-in-question">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
