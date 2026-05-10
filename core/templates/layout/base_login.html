@@ -7,7 +7,9 @@
 <body>
     <header>
         <div id = "header-main">
-            <h1 id = "page-name">Truth Seeker</h1>
+            <a href="{% url 'questions:index' %}" style="text-decoration:none; color:inherit;">
+                <h1 id="page-name">Truth Seeker</h1>
+            </a>
             <div id = "input-head">          
                 <input placeholder="What are you searhing, traveller?">
                 <button class = "my-button seek-btn top-button-2">Seek</button>
@@ -41,19 +43,25 @@
 
         <div id = "additional-info">
 
-            <div id = "popular-tags">
-                <h2 class = "name-of-section">Popular tags</h2>
-                <a class = "tag">life</a>
-                <a class = "tag">dreams</a>
-                <a class = "tag">gods</a>
-                <a class = "tag">games</a>
-                <a class = "tag">skate</a>
-                <a class = "tag">art</a>
-                <a class = "tag">cryptids</a>
-                <a class = "tag">news</a>
-                <a class = "tag">ghosts</a>
-            </div>
-
+                <div id="popular-tags">
+                    <h2 class="name-of-section">Popular tags</h2>
+                    {% if popular_tags %}
+                        {% for tag in popular_tags %}
+                            <a class="tag" href="{% url 'questions:tag' tag_name=tag.name %}">{{ tag.name }}</a>
+                        {% endfor %}
+                    {% else %}
+                        <!-- Заглушка, если теги не переданы -->
+                        <a class="tag">life</a>
+                        <a class="tag">dreams</a>
+                        <a class="tag">gods</a>
+                        <a class="tag">games</a>
+                        <a class="tag">government</a>
+                        <a class="tag">art</a>
+                        <a class="tag">cryptids</a>
+                        <a class="tag">news</a>
+                        <a class="tag">ghosts</a>
+                    {% endif %}
+                </div>
             <div id = "cool-members">
                 <h2 class = "name-of-section">Best Members</h2>
                 <div class = "member"><a href = "#">Harry Du Bois</a> <i class="bi bi-caret-left-fill my-bi"></i> </div>
