@@ -14,7 +14,6 @@ body {
     font-family: "DejaVu Sans", monospace;
 }
 
-/* ===== Header ===== */
 header {
     display: grid;
     grid-template-rows: 72px 4px 32px;
@@ -57,6 +56,12 @@ input {
     font-size: 1.15rem;
     display: grid;
     grid-template-columns: 50px auto;
+}
+
+#profile-2 {
+    margin-left: auto;
+    font-size: 1.15rem;
+    display: grid;
 }
 
 .avatar {
@@ -115,7 +120,6 @@ input {
     border-radius: 10px;
 }
 
-/* ===== Информация о странице ===== */
 #header-info {
     display: flex;
     flex-direction: row;
@@ -139,11 +143,10 @@ input {
     font-size: 1.3rem;
 }
 
-/* ===== Основной контент ===== */
 #main-body {
     flex: 1 0 auto;
     display: grid;
-    grid-template-columns: auto 30%;   /* твоя проверенная сетка */
+    grid-template-columns: auto 30%;   
     padding-bottom: 30px;
 }
 
@@ -155,7 +158,6 @@ input {
     margin-right: 20px;
 }
 
-/* ===== Карточка вопроса / ответа ===== */
 .question-block {
     display: grid;
     grid-template-columns: 100px auto;
@@ -166,7 +168,11 @@ input {
     min-height: 140px;
 }
 
-/* Текст обрезаем только на главной */
+.ask-button {
+    width: 75px;
+    height: 50px;
+}
+
 .information {
     overflow-wrap: break-word;
     word-break: break-all;
@@ -207,7 +213,6 @@ input {
     font-size: 1.1rem;
 }
 
-/* ===== Блок с аватаркой и рейтингом ===== */
 .img-block-part {
     display: grid;
     grid-template-rows: 50% 30%;
@@ -258,7 +263,6 @@ input {
     text-decoration: none;
 }
 
-/* ===== Сайдбар ===== */
 #additional-info {
     justify-self: end;
 }
@@ -315,7 +319,6 @@ input {
     display: inline-block;
 }
 
-/* ===== Пагинация ===== */
 .page-button {
     width: 60px;
     height: 45px;
@@ -338,7 +341,6 @@ input {
     color: orange;
 }
 
-/* ===== Футер ===== */
 footer {
     flex-shrink: 0;
     background-color: rgb(49, 49, 49);
@@ -346,7 +348,6 @@ footer {
     height: 25px;
 }
 
-/* ===== Мелкие фиксы ===== */
 .avatar-block {
     height: 60px;
     width: 60px;
@@ -355,4 +356,10 @@ footer {
 .no-style a {
     color: black;
     text-decoration: none;
+}
+
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
 }

@@ -112,8 +112,8 @@ input {
 .inputs {
     align-self: center;  
     margin-left: 5%;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 20% auto;
 }
 
 .naming {
@@ -130,6 +130,12 @@ input {
   height: 10px;
   background-color: white;
   position: relative;
+}
+
+#inputss {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .no-style {
@@ -218,8 +224,7 @@ input {
 }
 
 .avatar-input {
-    width: 200px;
-    margin-left: 24%;
+    width: 450px;
 }
 
 #approveBtn {
@@ -310,7 +315,7 @@ footer {
     font-family: "DejaVu Sans", monospace;
 }
 .my-bi {
-    color: #0e72f5;
+    color: black;
     display: none;
 }
 

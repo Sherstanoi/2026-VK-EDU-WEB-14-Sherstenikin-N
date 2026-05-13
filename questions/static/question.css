@@ -1,4 +1,3 @@
-/* ===== Полные стили для страницы вопроса ===== */
 * {
     box-sizing: border-box;
 }
@@ -15,7 +14,6 @@ body {
     font-family: "DejaVu Sans", monospace;
 }
 
-/* ===== Header (копия из main.css) ===== */
 header {
     display: grid;
     grid-template-rows: 72px 4px 32px;
@@ -116,7 +114,6 @@ input {
     border-radius: 10px;
 }
 
-/* ===== Информация о странице ===== */
 #header-info {
     display: flex;
     flex-direction: row;
@@ -130,11 +127,10 @@ input {
     font-size: xx-large;
 }
 
-/* ===== Основной контент ===== */
 #main-body {
     flex: 1 0 auto;
     display: grid;
-    grid-template-columns: 1fr 300px;   /* левая колонка тянется, правая 300px */
+    grid-template-columns: 1fr 300px;   
     gap: 30px;
     padding-bottom: 30px;
 }
@@ -147,7 +143,6 @@ input {
     margin-right: 20px;
 }
 
-/* ===== Карточка вопроса / ответа ===== */
 .question-block {
     display: grid;
     grid-template-columns: 100px auto;
@@ -155,16 +150,13 @@ input {
     padding-right: 20px;
     padding-bottom: 10px;
     word-wrap: break-word;
-    /* ВАЖНО: никаких ограничений высоты! */
 }
 
-/* Текст – полностью виден, без обрезания */
 .information {
     overflow-wrap: break-word;
     word-break: break-all;
     font-size: 1rem;
     font-family: "OCR A Std", monospace;
-    /* Никаких max-height, overflow: hidden, -webkit-line-clamp */
 }
 
 .no-margin {
@@ -188,7 +180,6 @@ input {
     margin-right: 10px;
 }
 
-/* ===== Блок с аватаркой и рейтингом ===== */
 .img-block-part {
     display: grid;
     grid-template-rows: 50% 30%;
@@ -239,7 +230,6 @@ input {
     text-decoration: none;
 }
 
-/* ===== Сайдбар ===== */
 #additional-info {
     justify-self: end;
 }
@@ -296,7 +286,6 @@ input {
     display: inline-block;
 }
 
-/* ===== Пагинация ===== */
 .page-button {
     width: 40px;
     height: 35px;
@@ -319,7 +308,6 @@ input {
     color: orange;
 }
 
-/* ===== Футер ===== */
 footer {
     flex-shrink: 0;
     background-color: rgb(49, 49, 49);
@@ -327,7 +315,6 @@ footer {
     height: 25px;
 }
 
-/* ===== Мелкие фиксы ===== */
 .avatar-block {
     height: 60px;
     width: 60px;
@@ -338,7 +325,6 @@ footer {
     text-decoration: none;
 }
 
-/* ===== Галочка правильного ответа ===== */
 .check-button {
     display: inline-flex;
     align-items: center;
@@ -355,7 +341,6 @@ footer {
     position: relative;
 }
 
-/* Когда чекбокс отмечен (правильный ответ) */
 .check-button input:checked + .check-icon::after {
     content: '';
     position: absolute;
@@ -368,10 +353,9 @@ footer {
     transform: rotate(45deg);
 }
 
-/* ===== Поле ввода ответа ===== */
 #thoughts-text {
     width: 100%;
-    min-height: 120px;   /* стало просторнее */
+    min-height: 120px;  
     resize: vertical;
     padding: 10px;
     font-family: inherit;
@@ -380,19 +364,16 @@ footer {
     box-sizing: border-box;
 }
 
-/* ===== Промежуток между вопросом и ответами ===== */
 .question-page > #header-line {
     margin-top: 30px;
     margin-bottom: 10px;
-    background-color: #999;   /* серая линия */
+    background-color: #999;   
 }
 
-/* ===== Отступ между отдельными ответами ===== */
 .question-page .question-block + .question-block {
     margin-top: 20px;
 }
 
-/* ===== Правильный ответ (галочка + текст) ===== */
 .check-button {
     display: inline-flex;
     align-items: center;
@@ -403,7 +384,7 @@ footer {
 }
 
 .check-button input {
-    display: none;   /* чекбокс не виден */
+    display: none;  
 }
 
 .check-icon {
@@ -417,7 +398,6 @@ footer {
     flex-shrink: 0;
 }
 
-/* Галочка, когда ответ правильный */
 .check-button input:checked + .check-icon::after {
     content: '';
     position: absolute;

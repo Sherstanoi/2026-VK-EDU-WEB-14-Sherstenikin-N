@@ -2,10 +2,17 @@
     <div class="img-block-part">
         <img src="{{ img_url }}" class="avatar avatar-block">
         <div class="rating">
-            <div class="rating-info"><span class="rating-span">{{ question.like_count|default:0 }}</span></div>
+            <div class="rating-info">
+                <span class="rating-span">{{ question.like_count|default:0 }}</span>
+            </div>
             <div class="rating-arrows">
-                <button type="button" class="rating-arrow arrow-right"> <i class="bi bi-caret-up-fill"></i> </button>
-                <button type="button" class="rating-arrow arrow-left"> <i class="bi bi-caret-down-fill"></i> </button>
+                {% if user.is_authenticated %}
+                    <button type="button" class="rating-arrow arrow-right"><i class="bi bi-caret-up-fill"></i></button>
+                    <button type="button" class="rating-arrow arrow-left"><i class="bi bi-caret-down-fill"></i></button>
+                {% else %}
+                    <button type="button" class="rating-arrow arrow-right disabled" title="Войдите, чтобы оценить"><i class="bi bi-caret-up-fill"></i></button>
+                    <button type="button" class="rating-arrow arrow-left disabled" title="Войдите, чтобы оценить"><i class="bi bi-caret-down-fill"></i></button>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -16,7 +23,7 @@
         <div class="information">{{ question.text|truncatewords:20 }}</div>
         <div class="links-in-question">
             <div class="answers">
-                <a href="{% url 'questions:question' pk=question.id %}"> answers: {{ question.answers.count }}</a>
+                <a href="{% url 'questions:question' pk=question.id %}"> answers: {{ question.answer_count|default:0 }}</a>
             </div>
             <div class="tags-block">
                 tags:

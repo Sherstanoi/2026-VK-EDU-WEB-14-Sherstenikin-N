@@ -71,3 +71,7 @@ class AnswerLike(models.Model):
 
     def __str__(self):
         return f"{self.user.username} likes answer #{self.answer.pk}"
+    
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('questions:question', kwargs={'pk': self.pk})

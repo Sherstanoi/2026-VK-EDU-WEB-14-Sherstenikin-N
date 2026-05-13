@@ -1,5 +1,4 @@
-{% extends 'questions/layout/base_logout.html' %}
-
+{% extends 'questions/layout/base.html' %}
 {% block head %}
     {% load static %}
     <head>
@@ -20,15 +19,19 @@
 
 {% block content %}
     <div class="question-page">
-        <!-- Карточка самого вопроса -->
         <div class="question-block">
             <div class="img-block-part">
                 <img src="{{ img_url }}" class="avatar avatar-block">
                 <div class="rating">
                     <div class="rating-info"><span class="rating-span">{{ question.like_count|default:0 }}</span></div>
                     <div class="rating-arrows">
-                        <button type="button" class="rating-arrow arrow-right"><i class="bi bi-caret-up-fill"></i></button>
-                        <button type="button" class="rating-arrow arrow-left"><i class="bi bi-caret-down-fill"></i></button>
+                        {% if user.is_authenticated %}
+                            <button type="button" class="rating-arrow arrow-right"><i class="bi bi-caret-up-fill"></i></button>
+                            <button type="button" class="rating-arrow arrow-left"><i class="bi bi-caret-down-fill"></i></button>
+                        {% else %}
+                            <button type="button" class="rating-arrow arrow-right disabled" title="Войдите, чтобы оценить"><i class="bi bi-caret-up-fill"></i></button>
+                            <button type="button" class="rating-arrow arrow-left disabled" title="Войдите, чтобы оценить"><i class="bi bi-caret-down-fill"></i></button>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -48,7 +51,6 @@
 
         <div id="header-line"></div>
 
-        <!-- Список ответов -->
         {% for answer in answers %}
             <div class="question-block answer-item">
                 <div class="img-block-part">
@@ -56,19 +58,26 @@
                     <div class="rating">
                         <div class="rating-info"><span class="rating-span">{{ answer.like_count|default:0 }}</span></div>
                         <div class="rating-arrows">
-                            <button class="rating-arrow arrow-right"><i class="bi bi-caret-up-fill"></i></button>
-                            <button class="rating-arrow arrow-left"><i class="bi bi-caret-down-fill"></i></button>
+                            {% if user.is_authenticated %}
+                                <button class="rating-arrow arrow-right"><i class="bi bi-caret-up-fill"></i></button>
+                                <button class="rating-arrow arrow-left"><i class="bi bi-caret-down-fill"></i></button>
+                            {% else %}
+                                <button class="rating-arrow arrow-right disabled" title="Войдите, чтобы оценить"><i class="bi bi-caret-up-fill"></i></button>
+                                <button class="rating-arrow arrow-left disabled" title="Войдите, чтобы оценить"><i class="bi bi-caret-down-fill"></i></button>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
                 <div class="info-block-part">
                     <div class="information">{{ answer.text }}</div>
                     <div class="links-in-question">
+                        {% if answer.is_correct %}
                             <label class="check-button">
                                 <input type="checkbox" checked hidden>
                                 <i class="check-icon"></i>
                                 <span>Правильный ответ</span>
                             </label>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -79,8 +88,16 @@
         {% include 'questions/partials/paginator.html' %}
 
         <div id="another-pages">
-            <textarea id="thoughts-text" class="main-input" placeholder="What are your thoughts on it?"></textarea>
-            <button class="my-button ansBtn">Answer!</button>
+            {% if user.is_authenticated %}
+                <form method="post" action="{% url 'questions:add_answer' question.pk %}">
+                    {% csrf_token %}
+                    {{ answer_form.text }}
+                    <button class="my-button ansBtn" type="submit">Answer!</button>
+                </form>
+            {% else %}
+                <textarea disabled title="Войдите, чтобы ответить">Войдите, чтобы ответить</textarea>
+                <button class="my-button ansBtn" disabled>Answer!</button>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

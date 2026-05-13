@@ -22,7 +22,7 @@ docker compose exec web python manage.py createsuperuser
    
 4. страница вопроса со списком ответов — `/question/<id>/`
    
-5. создание вопроса — `/newQuestion`
+5. создание вопроса — `/ask`
    
 6.  вход — `/login`
    
