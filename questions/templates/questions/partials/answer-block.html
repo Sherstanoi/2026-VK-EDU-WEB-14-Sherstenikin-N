@@ -1,0 +1,31 @@
+<div class="question-block answer-item">
+    <div class="img-block-part">
+        <img src="{{ img_url }}" class="avatar avatar-block">
+        <div class="rating">
+            <div class="rating-info">
+                <span class="rating-span">{{ answer.like_count|default:0 }}</span>
+            </div>
+            <div class="rating-arrows">
+                {% if user.is_authenticated %}
+                    <button class="rating-arrow arrow-right"><i class="bi bi-caret-up-fill"></i></button>
+                    <button class="rating-arrow arrow-left"><i class="bi bi-caret-down-fill"></i></button>
+                {% else %}
+                    <button class="rating-arrow arrow-right disabled" title="Войдите, чтобы оценить"><i class="bi bi-caret-up-fill"></i></button>
+                    <button class="rating-arrow arrow-left disabled" title="Войдите, чтобы оценить"><i class="bi bi-caret-down-fill"></i></button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="info-block-part">
+        <div class="information">{{ answer.text }}</div>
+        <div class="links-in-question">
+            {% if answer.is_correct %}
+                <label class="check-button">
+                    <input type="checkbox" checked hidden>
+                    <i class="check-icon"></i>
+                    <span>Правильный ответ</span>
+                </label>
+            {% endif %}
+        </div>
+    </div>
+</div>

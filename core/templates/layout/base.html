@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{%block head%}
+{%endblock%}
+<body>
+    <header>
+        <div id="header-main">
+            <a href="{% url 'questions:index' %}" style="text-decoration:none; color:inherit;">
+                <h1 id="page-name">Truth Seeker</h1>
+            </a>
+            <div id="inputss">          
+                <input placeholder="What are you searhing, traveller?">
+                <button class="my-button seek-btn top-button-2">Seek</button>
+            </div>
+
+            <div id="profile">
+                {% if user.is_authenticated %}
+                    {% if user.profile.avatar %}
+                        <img src="{{ user.profile.avatar.url }}" class="avatar">
+                    {% else %}
+                        <img src="{{ img_url }}" class="avatar">
+                    {% endif %}
+                    <div id="profile-info">
+                        <div id="name">{{ user.username }}</div>
+                        <div id="profile-buttons"> 
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn-primary dropdown-toggle my-button top-button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Change the world
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{% url 'questions:new_question' %}">New question</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'core:settings' %}">Settings</a></li>
+                                    <li>
+                                        <form method="post" action="{% url 'core:logout' %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="dropdown-item">Log Out</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div id="profile-info">
+                        <div id="name">ENTER:</div>
+                        <div id="profile-buttons"> 
+                            <button class="cool-button my-button no-style">
+                                <a href="{% url 'core:login' %}" class="no-style">
+                                    <i class="bi bi-caret-right-fill my-bi no-style"></i> Log in<i class="bi bi-caret-left-fill my-bi no-style"></i>
+                                </a>
+                            </button>
+                            <button class="cool-button my-button no-style">
+                                <a href="{% url 'core:register' %}" class="no-style">
+                                    <i class="bi bi-caret-right-fill my-bi no-style"></i> Register<i class="bi bi-caret-left-fill my-bi no-style"></i>
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div id="header-line"></div>
+        {% block header_info %}{% endblock %}
+    </header>
+
+    <div id="main-body">
+        <div id="question-block-mama">
+            {% block content %}{% endblock %}
+        </div>
+        <div id="additional-info">
+            <div id="popular-tags">
+                <h2 class="name-of-section">Popular tags</h2>
+                {% if popular_tags %}
+                    {% for tag in popular_tags %}
+                        <a class="tag" href="{% url 'questions:tag' tag_name=tag.name %}">{{ tag.name }}</a>
+                    {% endfor %}
+                {% else %}
+                    <a class="tag">life</a>
+                    <a class="tag">dreams</a>
+                    <a class="tag">gods</a>
+                    <a class="tag">games</a>
+                    <a class="tag">government</a>
+                    <a class="tag">art</a>
+                    <a class="tag">cryptids</a>
+                    <a class="tag">news</a>
+                    <a class="tag">ghosts</a>
+                {% endif %}
+            </div>
+            <div id="cool-members">
+                <h2 class="name-of-section">Best Members</h2>
+                <div class="member"><a href="#">Harry Du Bois</a> <i class="bi bi-caret-left-fill my-bi"></i></div>
+                <div class="member"><a href="#">Mae Borowski</a> <i class="bi bi-caret-left-fill my-bi"></i></div>
+                <div class="member"><a href="#">L0g-01</a> <i class="bi bi-caret-left-fill my-bi"></i></div>
+                <div class="member"><a href="#">Paper crane</a> <i class="bi bi-caret-left-fill my-bi"></i></div>
+                <div class="member"><a href="#">Olesha</a> <i class="bi bi-caret-left-fill my-bi"></i></div>
+                <div class="member"><a href="#">Heins Fufelshmerts</a> <i class="bi bi-caret-left-fill my-bi"></i></div>
+                <div class="member"><a href="#">Jessie Pinkman</a> <i class="bi bi-caret-left-fill my-bi"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <footer></footer>
+</body>
+</html>
