@@ -28,28 +28,38 @@
             
             <div class="inputs">
                 <div class="naming">Login:</div>
-                {{ form.username }}
-                {{ form.username.errors }}
+                <div class="field-wrapper">
+                    {{ form.username }}
+                    {{ form.username.errors }}
+                </div>
             </div>
             <div class="inputs">
                 <div class="naming-special">Email:</div>
-                {{ form.email }}
-                {{ form.email.errors }}
+                <div class="field-wrapper">
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                </div>
             </div>
             <div class="inputs">
                 <div class="naming">NickName:</div>
-                {{ form.nickname }}
-                {{ form.nickname.errors }}
+                <div class="field-wrapper">
+                    {{ form.nickname }}
+                    {{ form.nickname.errors }}
+                </div>
             </div>
             <div class="inputs">
                 <div class="naming-special">Password:</div>
-                {{ form.password1 }}
-                {{ form.password1.errors }}
+                <div class="field-wrapper">
+                    {{ form.password1 }}
+                    {{ form.password1.errors }}
+                </div>
             </div>
             <div class="inputs">
                 <div class="naming">Repeat password:</div>
-                {{ form.password2 }}
-                {{ form.password2.errors }}
+                <div class="field-wrapper">
+                    {{ form.password2 }}
+                    {{ form.password2.errors }}
+                </div>
             </div>
             <div class="inputs">
                 <div class="naming">Avatar:</div>
